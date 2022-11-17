@@ -1,0 +1,96 @@
+body{
+    background-image: linear-gradient(black, rgb(17,17,78));
+    background-repeat: no-repeat;
+    background-size: 1500px 1200px;
+}
+
+h1{
+    color: chocolate;
+}
+
+.form{
+    width: 100%;
+}
+
+.form-config{
+    width: 40%;
+    height: auto;
+    background-color: rgb(255, 255, 255, 0.205);
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 7px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.form-config a{
+    text-decoration: nome;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.form-config input[type="email"], .form-config input[type="password"]{
+    width: 80%;
+    height: 55px;
+    border: 3px solid rgba(73, 73, 73, 0.281);
+    border-radius: 7px;
+    background-color: aliceblue;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(73, 73, 73, 0.60);
+
+}
+
+
+
+.form-config form input[type="submit"]{
+    width: 40%;
+    height: 45px;
+}
+
+.form-config label{
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.categorai a{
+    text-decoration: none;
+    color: white;
+}
+
+.efeito:hover{
+    transition: 0.5s;
+    transform: scale(1.2, 1.2);
+}
+
+.efeitoCont{
+    transition-duration: 1s;
+}
+
+.footer-1{
+    width: 100%;
+    height: 70px;
+    color: white;
+    background-image: linear-gradient rgb(77, 77, 138);
+    text-align: center;
+    padding: 25px;
+}
+
+.footer-1 h5 a{
+    color: white;
+    text-decoration: none;
+}
+
+.corFundo{
+    background-image: linear-gradient(black, rgb(17, 17, 78));
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-config{
+        width: 97%;
+    }
+  }

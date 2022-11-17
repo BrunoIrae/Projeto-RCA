@@ -1,0 +1,31 @@
+<%- include('../partials/head_login_cadastro.ejs') %>
+
+    <body>
+        
+        <div class="principal">
+            <%- include('../partials/navbar.ejs') %>
+            <div class="container">
+                <br>
+                <div class="title text-center">
+                    <h1>RCA</h1>
+                </div>
+                <br>
+                <div class="form">
+                    <div class="form-config">
+                        <form action="/logado" method="post">
+                        <label for="">E-mail</label>
+                        <div><input type="email" class="btn btn-ligth" name="email" id="" placeholder="Digite seu e-mail">
+                        </div><br>
+                        <label for="">Senha</label>
+                        <div><input type="password" class="btn btn-ligth" name="senha" id="" placeholder="Digite sua senha">
+                        </div>
+                        <p><a href="/cadastro">Criar cadastro</a></p>
+                        <div><input type="submit" class="btn btn-success" name="" id="" value="Logar"></div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <%- include('../partials/footer-1.ejs') %>
+        </div>
+    </body>
+    <%- include('../partials/footer.ejs') %>
