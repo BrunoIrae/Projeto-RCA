@@ -2,10 +2,25 @@ const express = require('express')
 const app = express()
 const PORT = 3000;
 const bodyParser = require('body-parser')
+
+//Criptografar a senha do usuário
 const Bcrypt = require('bcrypt')
-const connection = require('./database/bd_login')
+
+//Bd para Login
+const connection = require('./database/bd_login', './database/bd_formulario')
 const cadastroUser = require('./database/cadastro_usuario');
+
+//BD para cadastro Pet
+
+const cadastroPet = require('./database/cadastro_pet');
+
+//User
 const usuario = require('./database/cadastro_usuario');
+
+//Pet
+const pet = require('./database/cadastro_pet');
+const { DatabaseError } = require('sequelize');
+const { response, application } = require('express');
 
 //Executando servidor
 app.listen(PORT)
@@ -27,27 +42,7 @@ connection.authenticate().then(()=>{
     console.log(error)
 })
 
-//Rota principal
-app.get('/', (req, res) =>{
-    res.render('index')
-})
-
-//Rota main
-app.get('/main',(req, res)=>{
-    res.render('page/main')
-})
-
-//Rota login
-app.get('/login',(req, res)=>{
-    res.render('partials/login')
-})
-
-//Rota cadastro
-app.get('/cadastro',(req, res)=>{
-    res.render('partials/cadastro')
-})
-
-//Rota de cadastro
+//Rota de cadastro user
 app.post('/cadastro-user', (req, res)=>{
     var email = req.body.email
     var senha = req.body.senha
@@ -60,6 +55,29 @@ app.post('/cadastro-user', (req, res)=>{
         confirma_senha: req.body.confirma_senha
     }).then(function(){
         res.redirect("/login")
+    }).catch(function(erro){
+        res.send("Houve erro no cadastro, cadastro não efetuado." + erro)
+    })
+})
+
+//Rota de cadastro
+app.post('/cadastro-pet', (req, res)=>{
+    var nome_pet = req.body.nome_pet
+    var sexo_pet = req.body.sexo_pet
+    var data_resgate_pet = req.body.data_resgate_pet
+    var cidade = req.body.cidade
+    var estado = req.body.estado
+    var endereco = req.body.endereco
+
+    cadastroPet.create({
+        nome_pet: nome_pet,
+        sexo_pet: sexo_pet,
+        data_resgate_pet: data_resgate_pet,
+        cidade: cidade,
+        estado: estado,
+        endereco: endereco,
+    }).then(function(){
+        res.redirect("/main")
     }).catch(function(erro){
         res.send("Houve erro no cadastro, cadastro não efetuado." + erro)
     })
@@ -83,6 +101,28 @@ app.post('/logado', (req,res)=>{
         }
     })
 })
+
+//Rota principal
+app.get('/', (req, res) =>{
+    res.render('index')
+})
+
+//Rota main
+app.get('/main',(req, res)=>{
+    res.render('page/main')
+})
+
+//Rota login
+app.get('/login',(req, res)=>{
+    res.render('partials/login')
+})
+
+//Rota cadastro
+app.get('/cadastro',(req, res)=>{
+    res.render('partials/cadastro')
+})
+
+
 //Iniciando o servidor
 app.listen((PORT , ()=>{
     console.log('Servior online!')
@@ -91,4 +131,10 @@ app.listen((PORT , ()=>{
 //Rota cadastro
 app.get('/formulario',(req, res)=>{
     res.render('partials/formulario')
+})
+
+
+//Rota principal
+app.get('/pets', (req, res) =>{
+    cadastroPet
 })

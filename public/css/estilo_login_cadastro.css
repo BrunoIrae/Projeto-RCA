@@ -29,7 +29,9 @@ h1{
     margin-top: 5px;
 }
 
-.form-config input[type="email"], .form-config input[type="password"]{
+.form-config input[type="email"], .form-config input[type="password"], .form-config input[type="nome_pet"], 
+.form-config input[type="sexo_pet"], .form-config input[type="data_resgate_pet"], .form-config input[type="cidade"], 
+.form-config input[type="estado"], .form-config input[type="endereco"]{
     width: 80%;
     height: 55px;
     border: 3px solid rgba(73, 73, 73, 0.281);
